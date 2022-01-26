@@ -1,15 +1,3 @@
-% DIN A4
-% Oben 		= 2,5 cm
-% Unten 	= 2,5 cm
-% Links 	= 3,0 cm
-% Rechts 	= 2,5 cm
-
-% Arial 11pt, Times New Roman 12pt
-% Zeilenabstand: einfach -1.5
-% Blocksatz mit Silbentrennung
-% Überschriften im Text abheben (fett oder so)
-
-
 \documentclass[11pt, a4paper]{moderncv}
 
 \usepackage[utf8]{inputenc} 	% utf-8 encoding
@@ -63,6 +51,31 @@
 	\glqq{#1}\grqq{}
 }
 
+\definecolor{lightblue}{HTML}{156396}
+
+\newcommand{\cvrating}[1]{
+	\color{lightblue}
+	\ifcase #1
+			\square\square\square\square\square
+		\or 
+			\blacksquare\square\square\square\square
+		\or 
+			\blacksquare\blacksquare\square\square\square
+		\or 
+			\blacksquare\blacksquare\blacksquare\square\square
+		\or 
+			\blacksquare\blacksquare\blacksquare\blacksquare\square
+		\or 
+			\blacksquare\blacksquare\blacksquare\blacksquare\blacksquare
+		\else 
+			NONE!
+			\GenericError{[mycode] }{Bad input: command cvrating only allows for input number from 0-5}%
+			{[mycode] command cvrating only allows for input number from 0-5}%
+			{}
+	\fi
+	\color{black}
+}
+
 \newcommand{\sfig}[1]{
 	\begin{figure}
 		\centering
@@ -85,16 +98,16 @@
 %\homepage{www.meine-homepage.de}
 %\social[twitter][www.twitter.com]{Twitter-Name}
 %\social[linkedin][www.linkedin.com]{LinkedIn-Name}
-\social[github][www.github.com]{tworkool}
+\social[github][www.github.com/tworkool/Lebenslauf-Oliver-Tworkowski]{tworkool}
 %\extrainfo{Hier können extra Informaitonen stehen.}
-\photo[3cm]{abb/Portrait_Oliver_Tworkowski}  %Die Dateiendung wird weggelassen.
+\photo[3cm]{abb/Portrait_Oliver_Tworkowski}
 %\quote{"Hier kann mein Lebensmotto oder ein Zitat stehen."}
 
 \definecolor{tableRowColor}{HTML}{f0f0f0}
 \begin{document}
 	\rowcolors{1}{tableRowColor}{}
 	\begin{longtable}[c]{c}
-		% DIESE TABELLE WIRD NUR MISSBRAUCHT UM \hiderowcolors ANZUWENDEN
+		% DIESE TABELLE WIRD NUR GEBRAUCHT UM \hiderowcolors ANZUWENDEN
 		\hiderowcolors  
 	\end{longtable}
 	\makecvtitle
@@ -113,14 +126,14 @@
 	\cvlanguage{deutsch}{Muttersprache}{}
 	\cvlanguage{polnisch}{zweite Muttersprache}{}
 	\cvlanguage{russisch}{erweiterte Grundkenntnisse}{Schulunterricht seit Grundschule}
-	\cvlanguage{englisch}{hervorragende Kenntnisse}{Schulunterricht seit der 3. Klasse und bilingualer Unterricht im Gymnasium}
+	\cvlanguage{englisch}{hervorragende Kenntnisse}{Bilingualer Unterricht im Gymnasium}
 	
 	\section{Arbeitserfahrung}
-	\cventry{Aug. 2019-Sep. 2021}{SAP SE}{}{Berlin}{}{Werkstudent im Team \inq{Identity and User Management}, Full Stack in Microservice-basierter Umgebung}
+	\cventry{Aug. 2019--Sep. 2021}{SAP SE}{}{Berlin}{}{Werkstudent im Team \inq{Identity and User Management}, Full Stack in Microservice-basierter Umgebung}
 	\subsection{Pre-Bachelor}
 	\cventry{2019}{Studienkreis GmbH}{}{Berlin}{}{Nachhilfelehrer Englischunterricht}
 	\cventry{2018}{DeinKiez}{dreimonatiges Vollzeitpraktikum}{Berlin}{}{3D-Drucker Bedienung und Grafikdesign}
-	\cventry{2017--2018}{diverse Minijobs}{}{Berlin}{}{Mehrere Jobs in der Gastronomie Branche und ein Job im Büro}
+	\cventry{2017--2018}{Diverse Minijobs}{}{Berlin}{}{Unterschiedliche Jobs in der Gastronomiebranche und ein Bürojob}
 	\cventry{2014--2017}{\inq{Stern-und Kreisschiffahrt} GmbH}{jeweils erste Juniwoche}{Berlin}{}{Tourguide für Sehenswürdigkeiten von Berlin}
 	
 	\section{Lizensen und Preise}
@@ -153,52 +166,47 @@
 		\endlastfoot
 		\showrowcolors
 		%
-		\LaTeX & $ \blacksquare\blacksquare\blacksquare\blacksquare\square $ \\
-		C\# & $ \blacksquare\blacksquare\blacksquare\blacksquare\square $ \\
-		C++ & $ \blacksquare\blacksquare\blacksquare\blacksquare\square $ \\
-		Java & $ \blacksquare\blacksquare\blacksquare\square\square $ \\
-		Kotlin & $ \blacksquare\blacksquare\blacksquare\blacksquare\square $ \\
-		Python & $ \blacksquare\blacksquare\blacksquare\blacksquare\blacksquare $ \\
-		Webentwicklung mit React JS* & $ \blacksquare\blacksquare\blacksquare\blacksquare\blacksquare $ \\
-		Blender 3D & $ \blacksquare\blacksquare\blacksquare\blacksquare\square $ \\
-		AutoCAD & $ \blacksquare\blacksquare\blacksquare\square\square $ \\
-		Inventor & $ \blacksquare\blacksquare\blacksquare\blacksquare\square $ \\
+		\LaTeX & $ \cvrating{4} $ \\
+		C\# & $ \cvrating{4} $ \\
+		C++ & $ \cvrating{4} $ \\
+		Java & $ \cvrating{3} $ \\
+		Androidentwicklung mit Kotlin & $ \cvrating{4} $ \\
+		Python & $ \cvrating{5} $ \\
+		Webentwicklung mit React JS* & $ \cvrating{5} $ \\
+		SQL & $ \cvrating{3} $ \\
+		MongoDB & $ \cvrating{3} $ \\
+		Blender 3D & $ \cvrating{4} $ \\
+		AutoCAD & $ \cvrating{4} $ \\
+		Inventor & $ \cvrating{4} $ \\
 %		\bottomrule 
 		\hiderowcolors    
 	\end{longtable}
 
 * Zum Webentwicklungs-Stack gehört die Entwicklung einer responsive Webapp mit SASS, Parcel Bundler, Webpack Bundler, Redux JS und anderen kleineren JS Paketen.
-
-%	\cvcomputer{Office}{Gute Kenntnisse in allen Office Programmen}{Adobe Photoshop}{Hervorragende Kenntnisse}
-%	\cvcomputer{LaTeX}{Sehr gute Kenntnisse}{Blender 3D}{Gute Kenntnisse}
-%	\cvcomputer{AutoCAD, Inventor}{Sehr gute Kenntnisse}{}{}
-%	\subsection{Programmiersprachen}
-%	\cvcomputer{LaTeX}{$ \CIRCLE\CIRCLE\CIRCLE\CIRCLE\Circle $}{Java}{}
-%	\cvcomputer{C\#}{Sehr gute Kenntnisse}{C++}{Gute Kenntnisse}
-%	\cvcomputer{Python}{Hervorragende Kenntnisse}{Kotlin}{Gute Kenntnisse}
-%	\cvcomputer{Webentwicklung React JS}{Sehr gute Kenntnisse}{}{}
 	
+	\newpage
 	\section{Hobbys und Interessen}
 	\cvlistdoubleitem{Windsurfen}{Ultimate Frisbee}
 	\cvlistdoubleitem{Segeln}{Volleyball}
-	\cvlistdoubleitem{Videospiele}{Programmieren}
-	
-	\newpage
-	\vfill  %Platz bis Seitenende auffüllen.
-	\includegraphics[height=2cm, keepaspectratio=true]{abb/US_OT.png}\\
-	Oliver Tworkowski\\
-	Berlin, \today
-	
-	\newpage
-	\section{Wassersportlicher Lebenslauf}
-	\cventry{ab 2018}{Windsurfen als Vollzeithobby}{}{}{}{Erstes, eigenes Windsurfmaterial gekauft, Fußschlaufen und Trapez-Fahren, Powerhalse, \inq{lightwind fundamentals}.}
-	\cventry{2017}{SBF Binnen}{}{Surf- und Segelschule Müggelsee, Berlin}{}{Sportboot-Führerschein für Binnengewässer unter Segel und Motor.}
-	\cventry{2017}{Segelregatta}{}{Almatur Giżycko (Polen)}{}{das gleiche wie im Vorjahr.}
-	\cventry{2016}{Segelregatta}{}{Almatur Giżycko (Polen)}{}{Zusammen mit meinem Onkel und 6 weiteren Seglern auf der Masurischen Seenplatte auf einem Zweimaster mit offenem Deck.}
-	\cventry{2012}{Erstes Mal windsurfen}{}{Surf- und Segelschule Müggelsee, Berlin}{}{}
+	\cvlistitem{Programmieren und Kennenlernen neuer Technologien}
+	\cvlistdoubleitem{Events mit Freunden}{Videospiele}
+	\cvlistitem{Musizieren und anderweitig künstlerisch Ausdrücken}
 	
 	\vfill  %Platz bis Seitenende auffüllen.
 	\includegraphics[height=2cm, keepaspectratio=true]{abb/US_OT.png}\\
 	Oliver Tworkowski\\
 	Berlin, \today
+	
+%	\newpage
+%	\section{Wassersportlicher Lebenslauf}
+%	\cventry{ab 2018}{Windsurfen als Vollzeithobby}{}{}{}{Erstes, eigenes Windsurfmaterial gekauft, Fußschlaufen und Trapez-Fahren, Powerhalse, \inq{lightwind fundamentals}.}
+%	\cventry{2017}{SBF Binnen}{}{Surf- und Segelschule Müggelsee, Berlin}{}{Sportboot-Führerschein für Binnengewässer unter Segel und Motor.}
+%	\cventry{2017}{Segelregatta}{}{Almatur Giżycko (Polen)}{}{das gleiche wie im Vorjahr.}
+%	\cventry{2016}{Segelregatta}{}{Almatur Giżycko (Polen)}{}{Zusammen mit meinem Onkel und 6 weiteren Seglern auf der Masurischen Seenplatte auf einem Zweimaster mit offenem Deck.}
+%	\cventry{2012}{Erstes Mal windsurfen}{}{Surf- und Segelschule Müggelsee, Berlin}{}{}
+%	
+%	\vfill  %Platz bis Seitenende auffüllen.
+%	\includegraphics[height=2cm, keepaspectratio=true]{abb/US_OT.png}\\
+%	Oliver Tworkowski\\
+%	Berlin, \today
 \end{document}
